@@ -1,7 +1,7 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
-import data
+from Login_ServeRest import data
 from page import ServeRestPage
 
 class TestServeRest:
