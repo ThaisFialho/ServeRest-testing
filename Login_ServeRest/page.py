@@ -9,6 +9,9 @@ class ServeRestPage:
     email_field = (By.ID, 'email')
     password_field = (By.ID, 'password')
     enter_button = (By.XPATH, '//button[contains(text(), "Entrar")]')
+    initial_page = (By.XPATH, '//h1[contains(text(), "Serverest Store")]')
+    error_message = (By.XPATH, '//span[contains(text(), "Email e/ou senha inválidos")]')
+
 
     def __init__(self, driver):
         self.driver = driver
@@ -25,7 +28,7 @@ class ServeRestPage:
         self.set_enter()
 
     def get_inicial_page(self):
-        element = self._wait_for_visible((By.XPATH, '//h1[contains(text(), "Serverest Store")]'))
+        element = self._wait_for_visible(self.initial_page)
         return element.text
 
 
@@ -34,3 +37,7 @@ class ServeRestPage:
 
     def get_password_field(self):
         return self.driver.find_element(*self.password_field).get_attribute('value')
+
+    def get_error_message(self):
+        element =  self._wait_for_visible(self.error_message)
+        return element.text
