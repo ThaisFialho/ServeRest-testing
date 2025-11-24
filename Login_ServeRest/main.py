@@ -15,14 +15,12 @@ class TestServeRest:
         email = data.EMAIL
         password = data.PASSWORD
         self.serveRest.set_login(email, password)
-        #self.serveRest.set_enter()
         assert self.serveRest.get_email_field() == email
         assert self.serveRest.get_password_field() == password
         assert self.serveRest.get_inicial_page() == 'Serverest Store'
         time.sleep(5)
         self.driver.quit()
 
-#
     def test_set_login_invalido(self):
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         self.driver.get(data.ServeRest_URL)
@@ -30,10 +28,8 @@ class TestServeRest:
         email = data.EMAIL
         invalid_password = data.INVALID_PASSWORD
         self.serveRest.set_login(email, invalid_password)
-        #self.serveRest.set_enter()
         assert self.serveRest.get_email_field() == email
         assert self.serveRest.get_password_field() == invalid_password
         assert self.serveRest.get_error_message() == 'Email e/ou senha inválidos'
         time.sleep(5)
         self.driver.quit()
-#
